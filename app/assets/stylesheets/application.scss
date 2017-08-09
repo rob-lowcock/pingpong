@@ -1,0 +1,40 @@
+@import "bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Roboto:100');
+
+$chop-green: #2eaa7d;
+
+h1 {
+  color: $chop-green;
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  letter-spacing: 6px;
+}
+
+form {
+  border-bottom: 1px $chop-green solid;
+  width: 100%;
+}
+
+.btn-primary {
+  background-color: $chop-green;
+  border-color: $chop-green;
+
+  &:hover, &:active {
+    background-color: darken($chop-green, 10%);
+    border-color: darken($chop-green, 10%);
+  }
+
+  &:focus {
+    -webkit-box-shadow: 0 0 0 2px rgba(46, 170, 125, 0.5);
+    box-shadow: 0 0 0 2px rgba(46, 170, 125, 0.5)
+  }
+}
+
+.defeated {
+  background-color: #2a2a2a;
+  color: #fff;
+  display: inline;
+  font-size: 0.5em;
+  text-transform: uppercase;
+  padding: 5px;
+}
