@@ -38,3 +38,9 @@ form {
   text-transform: uppercase;
   padding: 5px;
 }
+
+@include media-breakpoint-up(lg) {
+  .match-date {
+    text-align: left !important;
+  }
+}
