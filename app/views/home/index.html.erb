@@ -8,11 +8,11 @@
         <div class="form-group">
           <div class="input-group my-2">
             <div class="input-group-addon">@</div>
-            <%= m.text_field :w1, :class => 'form-control', :placeholder => 'Winner' %>
+            <%= m.email_field :w1, :class => 'form-control', :placeholder => 'Winner' %>
           </div>
           <div class="input-group my-2">
             <div class="input-group-addon">@</div>
-            <%= m.text_field :w2, :class => 'form-control', :placeholder => 'Winner' %>
+            <%= m.email_field :w2, :class => 'form-control', :placeholder => 'Winner' %>
           </div>
         </div>
       </div>
@@ -20,11 +20,11 @@
         <div class="form-group">
           <div class="input-group my-2">
             <div class="input-group-addon">@</div>
-            <%= m.text_field :l1, :class => 'form-control', :placeholder => 'Loser' %>
+            <%= m.email_field :l1, :class => 'form-control', :placeholder => 'Loser' %>
           </div>
           <div class="input-group my-2">
             <div class="input-group-addon">@</div>
-            <%= m.text_field :l2, :class => 'form-control', :placeholder => 'Loser' %>
+            <%= m.email_field :l2, :class => 'form-control', :placeholder => 'Loser' %>
           </div>
         </div>
       </div>
@@ -35,37 +35,17 @@
       </div>
     </div>
   <% end %>
-  <div class="row mt-3">
-    <div class="col"></div>
-    <div class="col-lg text-center">
-      <%= image_tag('defaultAvatar.png', width: '48', height: '48', class: 'rounded-circle') %>
-      <%= image_tag('defaultAvatar.png', width: '48', height: '48', class: 'rounded-circle') %>
-      <div class="defeated">defeated</div>
-      <%= image_tag('defaultAvatar.png', width: '48', height: '48', class: 'rounded-circle') %>
-      <%= image_tag('defaultAvatar.png', width: '48', height: '48', class: 'rounded-circle') %>
+  <% @matches.each do |match| %>
+    <div class="row mt-3">
+      <div class="col"></div>
+      <div class="col-lg text-center">
+        <img src="https://www.gravatar.com/avatar/<%= Digest::MD5.hexdigest(match.w1.downcase) %>?d=mm" alt="" width="48" height="48" class="rounded-circle">
+        <img src="https://www.gravatar.com/avatar/<%= Digest::MD5.hexdigest(match.w2.downcase) %>?d=mm" alt="" width="48" height="48" class="rounded-circle">
+        <div class="defeated">defeated</div>
+        <img src="https://www.gravatar.com/avatar/<%= Digest::MD5.hexdigest(match.l1.downcase) %>?d=mm" alt="" width="48" height="48" class="rounded-circle">
+        <img src="https://www.gravatar.com/avatar/<%= Digest::MD5.hexdigest(match.l2.downcase) %>?d=mm" alt="" width="48" height="48" class="rounded-circle">
+      </div>
+      <div class="col text-center match-date"><p class="text-muted font-italic mt-3"><%= match.created_at.strftime("#{match.created_at.day.ordinalize} %B %Y") %></p></div>
     </div>
-    <div class="col text-center match-date"><p class="text-muted font-italic mt-3">9th August 2017</p></div>
-  </div>
-  <div class="row mt-3">
-    <div class="col"></div>
-    <div class="col-lg text-center">
-      <%= image_tag('defaultAvatar.png', width: '48', height: '48', class: 'rounded-circle') %>
-      <%= image_tag('defaultAvatar.png', width: '48', height: '48', class: 'rounded-circle') %>
-      <div class="defeated">defeated</div>
-      <%= image_tag('defaultAvatar.png', width: '48', height: '48', class: 'rounded-circle') %>
-      <%= image_tag('defaultAvatar.png', width: '48', height: '48', class: 'rounded-circle') %>
-    </div>
-    <div class="col text-center match-date"><p class="text-muted font-italic mt-3">9th August 2017</p></div>
-  </div>
-  <div class="row mt-3">
-    <div class="col"></div>
-    <div class="col-lg text-center">
-      <%= image_tag('defaultAvatar.png', width: '48', height: '48', class: 'rounded-circle') %>
-      <%= image_tag('defaultAvatar.png', width: '48', height: '48', class: 'rounded-circle') %>
-      <div class="defeated">defeated</div>
-      <%= image_tag('defaultAvatar.png', width: '48', height: '48', class: 'rounded-circle') %>
-      <%= image_tag('defaultAvatar.png', width: '48', height: '48', class: 'rounded-circle') %>
-    </div>
-    <div class="col text-center match-date"><p class="text-muted font-italic mt-3">9th August 2017</p></div>
-  </div>
+  <% end %>
 </div>

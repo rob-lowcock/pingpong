@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
-  def index; end
+  def index
+    @matches = Match.all
+  end
 
   def create_match
     @match = Match.new(match_params)
